@@ -114,7 +114,7 @@ body {
     overflow-x: hidden;
 }
 #home{
-    /*border: 1px solid white;*/
+    border: 1px solid red;
     height: 100%;
     align-content: center;
 }
@@ -932,4 +932,107 @@ body {
     text-align: start;
 }
   
-  
+
+
+@media screen and (max-width: 480px) {
+    #header {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    #second_part_header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .site_text_top {
+        padding: 10px 0;
+    }
+
+    #greeting_info {
+        font-size: 1.2rem;
+        text-align: center;
+    }
+
+    #eng_tittle, #simple_descr {
+        text-align: center;
+        font-size: 1rem;
+        padding: 0 10px;
+    }
+
+    .project_div {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    #projects_div {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact_tabs {
+        margin: 10px;
+    }
+
+    #contact_me_container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .inner_contact_div {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    #skill_div {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .info_div {
+        width: 90%;
+        margin: auto;
+    }
+
+    #education_div {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .outer_education_div {
+        width: 90%;
+    }
+
+    .go_back_home {
+        bottom: 20px;
+        right: 20px;
+    }
+    .project_div, .info_div, .inner_contact_div {
+        width: 95% !important;
+    }
+}
+#projects_div,
+#skill_div,
+#contact_me_container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.project_div {
+    width: 30%; /* change to: */
+    width: 90%;
+    max-width: 500px;
+}
+body {
+    font-size: 1rem;
+}
+
+.top_greetings {
+    font-size: 2rem;
+}
+img, .logout_icon, .merge_icon, .contact_tabs i {
+    max-width: 100%;
+    height: auto;
+}
