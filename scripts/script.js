@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
             icon.classList.remove('bounce');
           }, 700);
         });
-      }
+    }
       
     triggerBounce();
     setInterval(triggerBounce, 2 * 60 * 1000);
