@@ -185,6 +185,7 @@ body {
 /* Show the slide-in menu when checkbox is checked */
 .menu_toggle:checked ~ #second_part_header {
     transform: translateX(0);
+    transition: transform 0.4 ease-out;
 }
 
 /* BODY STYLING */
