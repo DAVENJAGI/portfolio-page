@@ -71,7 +71,7 @@ body {
     transform: translateX(100%);
     transition: transform 0.4s ease-out;
     box-shadow: -4px 0 8px -2px rgba(0, 0, 0, 0.3); 
-    z-index: 199;
+    z-index: 200;
     gap: 0;
 }
 
@@ -159,7 +159,7 @@ body {
     height: 25px;
     cursor: pointer;
     padding: 5px;
-    z-index: 201; 
+    z-index: 229; 
 }
 
 .hamburger_menu .bar {
@@ -185,7 +185,7 @@ body {
 /* Show the slide-in menu when checkbox is checked */
 .menu_toggle:checked ~ #second_part_header {
     transform: translateX(0);
-    transition: transform 0.4 ease-out;
+    transition: transform 0.4s ease-out;
 }
 
 /* BODY STYLING */
@@ -1109,6 +1109,7 @@ outer_education_div::before {
     margin: 0.5rem;
 }
 
+
 .end_contact_tabs {
     border-radius: 8px;
     height: 40px;
@@ -1208,7 +1209,6 @@ outer_education_div::before {
     }
 
     #second_part_header {
-        
         position: static; 
         height: auto; 
         width: auto; 
@@ -1233,7 +1233,7 @@ outer_education_div::before {
     }
 
     .hamburger_menu {
-        display: none; 
+        display: flex;
     }
 
     .site_text_top {
@@ -1401,8 +1401,13 @@ outer_education_div::before {
         justify-content: space-between; 
         margin-bottom: 0; 
     }
-
     
+    #menu_toggle:checked ~ #second_part_header {
+        display: flex;
+      }
+    .menu_toggle {
+        display: none;
+    }
 
     #site_text_top_name {
         margin-left: 0;

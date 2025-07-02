@@ -34,6 +34,34 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
+    const menuToggle = document.getElementById("menu_toggle");
+    const navMenu = document.getElementById("second_part_header");
+
+    menuToggle.addEventListener("change", () => {
+        if (menuToggle.checked) {
+        navMenu.style.display = "flex";
+        } else {
+        navMenu.style.display = "none";
+        }
+    });
+
+    window.addEventListener("load", () => {
+        if (window.innerWidth < 768) {
+        navMenu.style.display = "none";
+        }
+    });
+
+    document.addEventListener("click", (event) => {
+        const isClickInsideMenu = navMenu.contains(event.target);
+        const isClickOnToggle = menuToggle.contains(event.target);
+        const isClickOnLabel = event.target.closest("label[for='menu_toggle']");
+    
+        if (!isClickInsideMenu && !isClickOnToggle && !isClickOnLabel) {
+            navMenu.style.display = "none";
+            menuToggle.checked = false;
+        }
+    });
+
 
     window.addEventListener('load', () => {
         document.querySelectorAll('.top_greetings').forEach(el => {
