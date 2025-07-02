@@ -14,16 +14,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.querySelectorAll('.outer_education_div').forEach(outerDiv => {
-        const lineDiv = outerDiv.querySelector('.down_line_div');
         const dotDiv = outerDiv.querySelector('.top_round_div');
-
+        
         outerDiv.addEventListener('mouseenter', () => {
-            lineDiv.style.backgroundColor = '#86D5EE';
             dotDiv.style.backgroundColor = "#86D5EE";
         });
 
         outerDiv.addEventListener('mouseleave', () => {
-            lineDiv.style.backgroundColor = 'gray';
             dotDiv.style.backgroundColor = "gray";
         });
     });

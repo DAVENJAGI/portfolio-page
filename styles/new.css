@@ -4,7 +4,7 @@ body {
     overflow-x: hidden;
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
-    font-size: 1rem; /* Base font size in rem for better scaling */
+    font-size: 1rem;
 }
 
 #whole_body {
@@ -15,7 +15,6 @@ body {
     background-color: #f1f1f1;
 }
 
-/* Scrollbar styling - generally good as is */
 ::-webkit-scrollbar {
     height: auto;
     width: 10px;
@@ -31,8 +30,9 @@ body {
 /* HEADER AND FOOTER HOME PAGE STYLING */
 #header {
     min-height: 56px;
-    max-height: 56px; /* Keeping a fixed height for consistency */
+    max-height: none;
     display: flex;
+    flex-wrap: wrap;
     position: sticky;
     top: 0;
     width: 100%;
@@ -40,49 +40,85 @@ body {
     background-color: #0d1117;
     color: #c9d1d9;
     box-shadow: 4px 4px 8px -2px rgb(211, 222, 226, 0.2);
-    align-items: center; /* Vertically align items in header */
-    justify-content: space-between; /* Distribute items with space between */
-    padding: 0 1rem; /* Added padding for better spacing on smaller screens */
-    box-sizing: border-box; /* Include padding in element's total width and height */
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    box-sizing: border-box; 
 }
 
 #first_part_header {
-    width: auto; /* Allow width to be determined by content */
+    width: auto;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    flex-grow: 1;
 }
 
 #second_part_header {
-    max-width: 40%;
-    gap: 1rem; /* Use rem for consistent spacing */
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 70%;
+    max-width: 300px;
+    background-color: #161b22;
     display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
+    padding-top: 60px; 
+    box-sizing: border-box;
+    transform: translateX(100%);
+    transition: transform 0.4s ease-out;
+    box-shadow: -4px 0 8px -2px rgba(0, 0, 0, 0.3); 
+    z-index: 199;
+    gap: 0;
+}
+
+#second_part_header a {
+    width: 100%;
+    text-align: center;
+    padding: 1rem 0; 
+    box-sizing: border-box;
+    max-width: none;
+    color: #c9d1d9; 
+    text-decoration: none; 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+}
+
+#second_part_header a:last-child {
+    border-bottom: none; 
+}
+
+#second_part_header a:hover {
+    background-color: #3c434b;
+    color: #66bfff;
 }
 
 .header_division {
-    width: auto; /* Allow width to be determined by content */
+    width: auto;
     display: flex;
     align-items: center;
 }
 
 #site_text_top_name {
-    width: auto; /* Adjust based on content */
+    width: auto;
     text-align: center;
     align-content: center;
-    font-size: 1.5rem; /* Adjusted font size for responsiveness */
+    font-size: 1.5rem;
     font-weight: bolder;
-    margin-left: 1rem; /* Use rem for margins */
+    margin-left: 1rem; 
     color: white;
-    white-space: nowrap; /* Prevent wrapping for the site title */
+    white-space: nowrap;
 }
 
 .site_text_top {
-    width: auto; /* Allow width to be determined by content */
+    width: auto;
     height: auto;
-    padding: 0.5rem 0.8rem; /* Use rem for padding */
+    padding: 0.5rem 0.8rem;
     text-align: center;
     align-content: center;
-    font-size: 1rem; /* Adjusted font size for responsiveness */
+    font-size: 1rem;
     font-weight: bolder;
     color: white;
     max-width: 20%;
@@ -110,14 +146,55 @@ body {
     color: #66bfff;
 }
 
+/* HAMBURGER MENU */
+.menu_toggle {
+    display: none;
+}
+
+.hamburger_menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 201; 
+}
+
+.hamburger_menu .bar {
+    width: 100%;
+    height: 3px;
+    background-color: #c9d1d9;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.menu_toggle:checked + .hamburger_menu .bar:nth-child(1) {
+    transform: translateY(11px) rotate(45deg);
+}
+
+.menu_toggle:checked + .hamburger_menu .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.menu_toggle:checked + .hamburger_menu .bar:nth-child(3) {
+    transform: translateY(-11px) rotate(-45deg);
+}
+
+/* Show the slide-in menu when checkbox is checked */
+.menu_toggle:checked ~ #second_part_header {
+    transform: translateX(0);
+}
+
 /* BODY STYLING */
 #body_div {
     position: relative;
-    display: flex; /* Changed to flex for better centering */
-    flex-direction: column; /* Stack children vertically */
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center; /* Center horizontally */
-    min-height: 100vh; /* Use min-height to allow content to expand */
+    align-items: center;
+    min-height: 100vh; 
     overflow-x: hidden;
     background: #0d1117;
     overflow-y: scroll;
@@ -141,7 +218,7 @@ body {
     align-items: center;
     justify-content: center;
     width: 100%;
-    font-size: clamp(1.5rem, 4vw, 2.5rem); /* Adjusted clamp values for better scaling */
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
     gap: 1rem;
     text-align: center;
     padding: 1rem;
@@ -149,7 +226,7 @@ body {
 }
 
 #shaking_head_emoji {
-    height: auto; /* Allow height to adjust */
+    height: auto;
     display: flex;
     justify-content: center;
     width: 100%;
@@ -185,17 +262,17 @@ body {
 #greeting_info {
     justify-content: center;
     display: flex;
-    flex-wrap: wrap; /* Allow text to wrap on smaller screens */
-    width: 90%; /* Increased width for better mobile display */
+    flex-wrap: wrap;
+    width: 90%;
     text-align: center;
-    font-size: clamp(2rem, 8vw, 3.75rem); /* Adjusted font size for better scaling */
+    font-size: clamp(2rem, 8vw, 3.75rem);
     color: white;
     margin-bottom: 1rem;
 }
 
 #eng_tittle {
     color: white;
-    font-size: clamp(1.2rem, 3vw, 1.563rem); /* Adjusted font size */
+    font-size: clamp(1.2rem, 3vw, 1.563rem);
     margin: 0.5rem auto;
     text-align: center;
     width: 90%;
@@ -203,16 +280,16 @@ body {
 
 #simple_descr {
     color: white;
-    font-size: clamp(1.1rem, 3vw, 1.563rem); /* Adjusted font size */
+    font-size: clamp(1.1rem, 3vw, 1.563rem);
     text-align: center;
-    width: 90%; /* Increased width for better mobile display */
+    width: 90%;
     padding: 0 1rem;
     box-sizing: border-box;
 }
 
 .top_greetings {
-    font-size: clamp(1.8rem, 6vw, 3.125rem); /* Adjusted font size */
-    margin: 0 0.5rem; /* Adjusted margin */
+    font-size: clamp(1.8rem, 6vw, 3.125rem);
+    margin: 0 0.5rem;
     align-content: center;
     overflow: hidden;
     white-space: nowrap;
@@ -240,23 +317,23 @@ body {
 }
 
 #error_button {
-    min-width: 80%; /* Increased min-width for better touch targets */
+    min-width: 80%;
     height: auto;
     justify-content: center;
-    margin: 1rem auto; /* Centered with auto margins */
+    margin: 1rem auto;
     display: flex;
 }
 
 .nav_buttons {
     display: flex;
-    min-width: 180px; /* Adjusted min-width */
+    min-width: 180px;
     height: 50px;
     border: 1px solid white;
     background: transparent;
     background-color: #545b65;
     border-radius: 30px;
     justify-content: center;
-    align-items: center; /* Vertically align content */
+    align-items: center;
     color: white;
     cursor: pointer;
     box-shadow: 2px 2px 4px -2px #d3dee2;
@@ -274,28 +351,28 @@ body {
 .logout_txt {
     align-content: center;
     width: auto;
-    font-size: 1.125rem; /* Converted to rem */
+    font-size: 1.125rem; 
     margin-left: 0.5rem;
 }
 
 .nav_buttons:hover {
     transition: transform ease-in-out 0.5s;
     background-color: #3c434b;
-    transform: scale(1.05); /* Slightly less aggressive scale on hover for mobile */
+    transform: scale(1.05);
     color: white;
     border: 1px solid white;
     box-shadow: 4px 4px 8px -2px #00000033;
 }
 
 #contact_icons {
-    width: 80%; /* Adjusted width for better mobile display */
+    width: 80%;
     height: auto;
     margin-top: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1rem; /* Use rem for consistent spacing */
-    flex-wrap: wrap; /* Allow icons to wrap */
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
 @keyframes bounce {
@@ -323,11 +400,11 @@ body {
 .contact_tabs {
     border: 1px solid #0d1117;
     border-radius: 8px;
-    height: 44px; /* Increased touch target size */
-    width: 44px; /* Increased touch target size */
+    height: 44px;
+    width: 44px;
     color: white;
-    font-size: 1.875rem; /* Converted to rem */
-    display: flex; /* Use flex for centering icon */
+    font-size: 1.875rem;
+    display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
@@ -335,8 +412,8 @@ body {
 
 .contact_tabs:hover {
     background-color: #3c434b;
-    transition: all ease-in-out 0.3s; /* Smoother transition */
-    transform: scale(1.1); /* Slightly increased scale on hover */
+    transition: all ease-in-out 0.3s;
+    transform: scale(1.1);
     border: 1px solid #adb5bd;
 }
 
@@ -344,19 +421,19 @@ body {
 #about {
     border: 1px solid #161b22;
     width: 100%;
-    min-height: 100vh; /* Use min-height */
+    min-height: 100vh;
     background-color: #161b22;
-    display: flex; /* Changed to flex */
-    flex-direction: column; /* Stack children vertically */
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    padding: 2rem 1rem; /* Added padding */
+    padding: 2rem 1rem;
     box-sizing: border-box;
 }
 
 #simple_desc {
-    font-size: 1.25rem; /* Converted to rem */
+    font-size: 1.25rem; 
     color: white;
     text-align: center;
     width: 90%;
@@ -365,8 +442,8 @@ body {
 
 #about_me_title {
     height: auto;
-    width: 90%; /* Adjusted width */
-    font-size: clamp(2rem, 5vw, 2.5rem); /* Adjusted font size */
+    width: 90%; 
+    font-size: clamp(2rem, 5vw, 2.5rem);
     align-content: center;
     text-align: center;
     color: white;
@@ -376,8 +453,8 @@ body {
 
 #project_me_title {
     height: auto;
-    width: 90%; /* Adjusted width */
-    font-size: clamp(2.5rem, 6vw, 3.125rem); /* Adjusted font size */
+    width: 90%; 
+    font-size: clamp(2.5rem, 6vw, 3.125rem);
     align-content: center;
     text-align: center;
     color: white;
@@ -387,33 +464,33 @@ body {
 
 #about_me_txt {
     margin: 1rem auto;
-    width: 90%; /* Adjusted width */
+    width: 90%;
     padding: 1rem;
-    font-size: 1.25rem; /* Converted to rem */
+    font-size: 1.25rem;
     color: white;
     text-align: center;
     box-sizing: border-box;
 }
 
 #skill_div {
-    height: auto; /* Allow height to adjust */
-    width: 90%; /* Adjusted width */
+    height: auto;
+    width: 90%;
     display: flex;
     justify-content: center;
-    gap: 1rem; /* Consistent gap */
-    flex-wrap: wrap; /* Allow items to wrap */
+    gap: 1rem;
+    flex-wrap: wrap; 
 }
 
 .info_div {
     border: 1px solid #83838366;
-    width: 100%; /* Default to full width for small screens */
-    max-width: 550px; /* Set a max-width */
-    height: auto; /* Allow height to adjust */
-    min-height: 250px; /* Ensure minimum height */
+    width: 100%;
+    max-width: 550px; 
+    height: auto;
+    min-height: 250px; 
     border-radius: 12px;
     margin: 1rem;
     background-color: #21262d;
-    display: flex; /* Use flex for internal centering */
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -423,8 +500,8 @@ body {
 
 .info_div:hover {
     box-shadow: 0 2px 8px -2 #010409cc;
-    transform: scale(1.02); /* Slightly reduced scale on hover for mobile */
-    transition: all ease-in-out 0.5s; /* Smoother transition */
+    transform: scale(1.02); 
+    transition: all ease-in-out 0.5s; 
 }
 
 .about_div_icon {
@@ -441,7 +518,7 @@ body {
     height: 70px;
     width: 70px;
     color: #32CD32;
-    font-size: 2.5rem; /* Converted to rem */
+    font-size: 2.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -449,7 +526,7 @@ body {
 }
 
 .stack_txt {
-    font-size: 1.563rem; /* Converted to rem */
+    font-size: 1.563rem;
     height: auto;
     padding: 0.5rem 0;
     text-align: center;
@@ -460,7 +537,7 @@ body {
 .stack_description {
     color: white;
     font-weight: 500;
-    font-size: 1.125rem; /* Converted to rem */
+    font-size: 1.125rem; 
     text-align: center;
     padding: 0.5rem;
 }
@@ -474,7 +551,7 @@ body {
     background-color: #0d1117;
     border: 1px solid #0d1117;
     width: 100%;
-    min-height: 100vh; /* Use min-height */
+    min-height: 100vh; 
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -482,12 +559,12 @@ body {
     gap: 1rem;
     padding: 2rem 1rem;
     box-sizing: border-box;
-    margin-top: 0; /* Removed top margin as it's part of the flow */
+    margin-top: 0; 
 }
 
 #project_heading_title {
     height: auto;
-    font-size: clamp(1.875rem, 5vw, 2.5rem); /* Adjusted font size */
+    font-size: clamp(1.875rem, 5vw, 2.5rem); 
     font-family: inherit;
     color: white;
     margin: 1rem auto;
@@ -503,44 +580,44 @@ body {
     color: white;
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Align items to the start for better layout */
+    align-items: flex-start; 
     flex-wrap: wrap;
-    gap: 1.5rem; /* Increased gap for better separation */
+    gap: 1.5rem; 
 }
 
 .project_div {
     border: 1px solid #83838366;
-    width: 100%; /* Default to full width for small screens */
-    max-width: 500px; /* Set a max-width */
+    width: 100%; 
+    max-width: 500px;
     height: auto;
     min-height: 480px;
     border-radius: 12px;
-    margin: 0.5rem; /* Adjusted margin */
+    margin: 0.5rem; 
     background-color: #21262d;
     cursor: pointer;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Distribute content vertically */
+    justify-content: space-between;
     box-sizing: border-box;
-    padding-bottom: 1rem; /* Added padding to the bottom */
+    padding-bottom: 1rem; 
 }
 
 .project_div:hover {
     box-shadow: 0 2px 8px -2 #010409cc;
     background-color: #3c434be6;
-    transform: translateY(-0.5rem); /* Adjusted transform for less aggressive movement */
+    transform: translateY(-0.5rem); 
     transition: all ease-in-out 0.3s;
 }
 
 .project_title {
-    width: 96%; /* Adjusted width for internal padding */
+    width: 96%; /
     height: auto;
     min-height: 10%;
     margin: 0.5rem 1%;
     padding-left: 0.5rem;
     align-content: center;
     font-weight: 700;
-    font-size: 1.25rem; /* Converted to rem */
+    font-size: 1.25rem; 
     color: white;
     border-bottom: 1px solid #83838333;
     display: flex;
@@ -549,33 +626,33 @@ body {
 
 .project_description {
     height: auto;
-    min-height: 63%; /* Ensure minimum height */
+    min-height: 63%; 
     margin: 0.5rem 1%;
     text-align: center;
-    font-size: 0.938rem; /* Converted to rem */
+    font-size: 0.938rem; 
     padding: 0.5rem;
-    overflow-y: auto; /* Changed to auto to show scrollbar only when needed */
-    flex-grow: 1; /* Allow description to take available space */
+    overflow-y: auto; 
+    flex-grow: 1; 
 }
 
 .project_languages {
     display: flex;
     margin: 0.5rem 1%;
-    gap: 0.5rem; /* Consistent gap */
+    gap: 0.5rem;
     height: auto;
     min-height: 10%;
     align-items: center;
     justify-content: flex-start;
     border-top: 1px solid #83838333;
     border-bottom: 1px solid #83838333;
-    flex-wrap: wrap; /* Allow languages to wrap */
+    flex-wrap: wrap;
     padding: 0.5rem 0;
 }
 
 .item_lang {
     width: auto;
-    height: 25px; /* Fixed height for consistency */
-    font-size: 0.813rem; /* Converted to rem */
+    height: 25px; 
+    font-size: 0.813rem;
     margin-left: 0.5rem;
     align-content: center;
     border-radius: 9px;
@@ -598,7 +675,7 @@ body {
     height: auto;
     min-height: 10%;
     margin: 1rem 1%;
-    font-size: 0.813rem; /* Converted to rem */
+    font-size: 0.813rem; 
     align-items: center;
     justify-content: center;
 }
@@ -628,24 +705,44 @@ body {
 /* EDUCATION SECTION */
 .outer_education_div {
     display: flex;
-    flex-direction: column; /* Stack vertically for mobile */
+    /*border: 1px solid red;*/
+    flex-direction: row; 
     cursor: pointer;
-    width: 100%; /* Ensure it takes full width */
-    align-items: center;
+    width: 100%; 
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    height: auto;
+    border-left: 5px solid #3c434b;
+    position: relative;
 }
 
 #education_div {
     margin: 1rem auto;
-    width: 90%; /* Adjusted width */
+    width: 90%; 
     padding: 0.5rem;
     font-size: 1.25rem;
     color: white;
-    display: flex;
+    /*display: flex;*/
+    /*border: 1px solid red;*/
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 1rem;
 }
+
+/*
+#education_div::before {
+    content: "";
+    position: absolute; 
+    left: 10px; 
+    transform: translateX(-1.5px); 
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background-color: #3c434b; 
+    z-index: 0; 
+}
+*/
 
 #education_me_title {
     height: auto;
@@ -685,22 +782,43 @@ body {
 
 .education_div_in {
     border: 1px solid #83838366;
-    width: 100%; /* Default to full width */
-    max-width: 700px; /* Set a max-width for larger screens */
-    min-height: 450px;
+    width: 100%; 
     height: auto;
     border-radius: 12px;
-    margin: 1rem auto; /* Centered with auto margins */
+    margin: 1rem auto;
     background-color: #21262d;
     padding: 1rem;
     box-sizing: border-box;
+    /*border: 1px solid red;*/
 }
 
-.outer_education_div:hover {
-    margin-left: 0; /* Reset margin on hover for mobile */
-    transform: scale(1.01); /* Subtle scale on hover */
-    transition: all ease-in-out 0.5s;
+
+.outer_education_div + .outer_education_div {
+    margin-top: 0rem;
 }
+outer_education_div::before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 0;
+    width: 4px; 
+    height: 0; 
+    background-color: #86D5EE;
+    transition: height 0.5s ease-in-out; 
+    z-index: 0; 
+    border-bottom-left-radius: 12px;
+}
+.outer_education_div:hover {
+    margin-left: 2rem;
+    transform: scale(1.01);
+    transition: all ease-in-out 0.5s; 
+    border-left: 4px solid #86D5EE;
+    box-shadow: 0px 2px 2px rgb(134, 213, 238,0.2)
+}
+.outer_education_div:hover::before {
+    height: calc(100% - 50px); 
+}
+
 
 .education_title {
     width: 96%;
@@ -752,7 +870,7 @@ body {
     text-align: center;
     font-size: 0.938rem;
     padding: 0.5rem;
-    overflow-y: auto; /* Changed to auto for scrollbar only when needed */
+    overflow-y: auto;
 }
 
 .education_languages {
@@ -769,33 +887,47 @@ body {
     padding: 0.5rem 0;
 }
 
-/* Item lang is already defined globally, but ensure it works here */
+/* LANG ITEM */
 .round_button {
-    max-height: 80%;
-    width: 20px; /* Fixed width */
-    min-width: 20px; /* Ensure minimum width */
-    margin-left: 0.5rem;
-    margin-top: 0.5rem;
+    height: inherit;
+    width: 20px;
+    min-width: 20px;
+    margin-left: 0;
+    margin-right: 0.5rem; 
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-}
+    z-index: 2;
 
+    top: 0%;
+    left: -12.5px;
+    transform: translate(-50%);
+}
 .top_round_div {
-    height: 15px; /* Slightly smaller for mobile */
-    width: 15px; /* Slightly smaller for mobile */
+    height: 20px;
+    width: 20px; 
     border-radius: 50%;
     background-color: gray;
-    flex-shrink: 0; /* Prevent shrinking */
+    flex-shrink: 0;
+    position: relative;
+    z-index: 3;
 }
 
 .down_line_div {
-    height: 100%; /* Allow line to connect */
-    width: 3px; /* Thinner line */
+    min-height: 150px;
+    width: 3px;
     background: #3c434b;
-    flex-grow: 1; /* Allow line to grow */
+    flex-grow: 1; 
+    margin-top: -10px;
+    position: relative;
+    z-index: 0;
+    /*border: 1px solid red;*/
+}
+.outer_education_div:last-child {
+    padding-bottom: 0; 
+    margin-bottom: 1rem;
 }
 
 .inner_info_education {
@@ -803,15 +935,15 @@ body {
     display: flex;
     justify-content: flex-start;
     padding: 0.5rem;
-    width: 100%; /* Full width within its container */
+    width: 100%; 
     box-sizing: border-box;
 }
 
 .round_learnt_info {
-    height: 7px; /* Smaller dot */
-    width: 7px; /* Smaller dot */
+    height: 7px; 
+    width: 7px; 
     margin-left: 0.5rem;
-    margin-top: 0.3rem; /* Adjusted margin */
+    margin-top: 0.3rem; 
     border-radius: 50%;
     background-color: #3c434b;
     flex-shrink: 0;
@@ -821,8 +953,8 @@ body {
     margin-left: 0.5rem;
     text-align: start;
     height: auto;
-    font-size: 0.938rem; /* Converted to rem */
-    flex-grow: 1; /* Allow text to take space */
+    font-size: 0.938rem; 
+    flex-grow: 1; 
 }
 
 /* CONTACTS SECTION */
@@ -868,31 +1000,31 @@ body {
     font-size: 1.25rem;
     color: white;
     display: flex;
-    flex-direction: column; /* Stack vertically for mobile */
+    flex-direction: column; 
     justify-content: center;
     align-items: center;
-    gap: 1.5rem; /* Increased gap */
+    gap: 1.5rem; 
 }
 
 #contact_me_container {
-    width: 90%; /* Adjusted width */
+    width: 90%; 
     min-height: 150px;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1.5rem; /* Consistent gap */
-    flex-wrap: wrap; /* Allow items to wrap */
+    gap: 1.5rem; 
+    flex-wrap: wrap; 
 }
 
 .inner_contact_div {
-    width: 100%; /* Default to full width */
-    max-width: 250px; /* Set a max-width */
+    width: 100%; 
+    max-width: 250px; 
     height: 120px;
     background-color: #21262d;
     border: 1px solid #83838366;
     border-radius: 9px;
     cursor: pointer;
-    position: relative; /* Needed for ::before pseudo-element */
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -943,7 +1075,7 @@ body {
 }
 
 .inner_contact_div:hover {
-    transform: scale(1.02); /* Slightly reduced scale on hover for mobile */
+    transform: scale(1.02);
     transition: all ease-in-out 0.5s;
 }
 
@@ -959,21 +1091,21 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.938rem; /* Converted to rem */
+    font-size: 0.938rem; 
     text-align: center;
     width: 100%;
 }
 
 .bottom_contact_tab {
     border: 1px solid #83838366;
-    width: 44px; /* Increased touch target size */
-    height: 44px; /* Increased touch target size */
+    width: 44px; 
+    height: 44px; 
     border-radius: 10px;
     background-color: #0d1117;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0.5rem; /* Added margin for spacing */
+    margin: 0.5rem;
 }
 
 .end_contact_tabs {
@@ -991,6 +1123,9 @@ body {
 .info_txt {
     color: white;
     text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 @keyframes bounce {
@@ -1011,24 +1146,24 @@ body {
 
 .go_back_home {
     border: 5px solid #86D5EE;
-    bottom: 2rem; /* Use rem for positioning */
-    right: 1rem; /* Adjust positioning for mobile */
-    position: fixed; /* Changed to fixed for consistent placement */
+    bottom: 2rem; 
+    right: 1rem; 
+    position: fixed; 
     height: 50px;
     width: 50px;
-    display: flex; /* Use flex to center content */
+    display: flex; 
     justify-content: center;
     align-items: center;
     color: #86D5EE;
-    font-size: 1.875rem; /* Converted to rem */
+    font-size: 1.875rem; 
     border-radius: 50%;
     cursor: pointer;
     animation: bounce 2s infinite;
-    z-index: 100; /* Ensure it's above other content */
+    z-index: 100; 
 }
 
 .go_back_home:hover {
-    transform: scale(1.1); /* Slightly increased scale on hover */
+    transform: scale(1.1);
     transition: all ease-in-out 0.3s;
 }
 
@@ -1054,32 +1189,223 @@ body {
     text-align: start;
 }
 
-/* Media Queries for different screen sizes */
+/* MEDIA FOR DIFFERENT SIZE SCREEN */
+@media screen and (min-width: 769px) {
+    #header {
+        flex-wrap: nowrap;
+        justify-content: space-between; 
+        max-height: 56px; 
+    }
+
+    #first_part_header {
+        flex-grow: 0;
+    }
+
+    #site_text_top_name {
+        margin-left: 15%; 
+        font-size: 25px; 
+    }
+
+    #second_part_header {
+        
+        position: static; 
+        height: auto; 
+        width: auto; 
+        max-width: 40%; 
+        background-color: transparent; 
+        padding-top: 0; 
+        transform: translateX(0); 
+        box-shadow: none; 
+        z-index: auto; 
+        display: flex; 
+        flex-direction: row;
+        gap: 2%; 
+        justify-content: flex-end; 
+    }
+
+    #second_part_header a {
+        width: auto; 
+        padding: 0.5rem 0.8rem; 
+        max-width: 20%; 
+        color: #c9d1d9; 
+        border-bottom: none;
+    }
+
+    .hamburger_menu {
+        display: none; 
+    }
+
+    .site_text_top {
+        font-size: 20px;
+    }
+
+    
+    #greeting_info {
+        font-size: clamp(2.5rem, 6vw, 3.75rem);
+    }
+
+    #eng_tittle,
+    #simple_descr {
+        font-size: clamp(1.25rem, 2vw, 1.563rem);
+    }
+
+    .top_greetings {
+        font-size: clamp(2rem, 5vw, 3.125rem);
+    }
+
+    #error_button {
+        min-width: unset; 
+        width: auto;
+    }
+
+    .nav_buttons {
+        min-width: 200px;
+        height: 50px;
+    }
+
+    #contact_icons {
+        width: 60%;
+        gap: 2rem;
+    }
+
+    .contact_tabs {
+        height: 50px;
+        width: 50px;
+        font-size: 2rem;
+    }
+
+    #about_me_title,
+    #project_me_title,
+    #education_me_title,
+    #contact_me_title {
+        font-size: clamp(3rem, 5vw, 3.125rem);
+    }
+
+    #about_me_txt,
+    #simple_desc {
+        font-size: 1.25rem;
+        width: 70%;
+    }
+
+    #skill_div {
+        justify-content: center;
+        gap: 2rem;
+        width: 80%;
+    }
+
+    .info_div {
+        width: 45%; 
+        min-height: 280px;
+    }
+
+    #projects_div {
+        justify-content: center;
+        gap: 2rem;
+        width: 80%;
+    }
+
+    .project_div {
+        width: 45%; 
+        max-width: 400px;
+        min-height: 500px;
+    }
+
+    #education_div {
+        flex-direction: row; 
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 2rem;
+        width: 80%;
+    }
+
+    .outer_education_div {
+        min-width: 75%;
+        max-width: 80%;
+        /*max-width: 450px;*/
+        margin-left: 20px;
+    }
+
+    .education_div_in {
+        width: 100%;
+        margin: 0;
+        min-height: auto;
+    }
+
+    .education_title,
+    .education_institution,
+    .education_institution_time {
+        font-size: 1.25rem;
+    }
+
+    .education_description_info {
+        font-size: 1rem;
+    }
+
+    .item_lang {
+        font-size: 0.9rem;
+        height: 30px;
+    }
+
+    #contact_me_container {
+        flex-direction: row;
+        width: 70%;
+        gap: 2rem;
+    }
+
+    .inner_contact_div {
+        width: 30%;
+        max-width: 250px;
+        height: 150px;
+    }
+
+    .top_icon {
+        font-size: 2rem;
+    }
+
+    .bottom_text {
+        font-size: 1rem;
+    }
+
+    .bottom_contact_tab {
+        width: 50px;
+        height: 50px;
+    }
+
+    .end_contact_tabs {
+        font-size: 2rem;
+    }
+
+    .go_back_home {
+        bottom: 2rem;
+        right: 2rem;
+        height: 60px;
+        width: 60px;
+        font-size: 2rem;
+        border-width: 5px;
+    }
+}
+
+
 @media screen and (max-width: 768px) {
-    /* Tablet and smaller adjustments */
+    /* TABLET ADJUSTMENTS */
     #header {
         flex-direction: column;
         height: auto;
-        padding: 0.5rem;
+        padding: 0.5rem 1rem; 
     }
 
-    #first_part_header,
-    #second_part_header {
+    #first_part_header {
         width: 100%;
-        justify-content: center;
-        margin-bottom: 0.5rem;
+        justify-content: space-between; 
+        margin-bottom: 0; 
     }
+
+    
 
     #site_text_top_name {
         margin-left: 0;
         font-size: 1.3rem;
-    }
-
-    .site_text_top {
-        max-width: none;
-        width: auto;
-        padding: 0.4rem 0.6rem;
-        font-size: 0.9rem;
     }
 
     #greeting_info {
@@ -1160,7 +1486,7 @@ body {
 }
 
 @media screen and (max-width: 480px) {
-    /* Mobile specific adjustments - already good foundation */
+    /* MOBILE STYLING */
     #header {
         flex-direction: column;
         align-items: center;
@@ -1170,25 +1496,26 @@ body {
         padding: 0.5rem;
     }
 
-    #first_part_header,
-    #second_part_header {
+    #first_part_header {
         width: 100%;
         justify-content: center;
-        flex-wrap: wrap; /* Allow header navigation items to wrap */
+        flex-wrap: nowrap;
         margin-bottom: 0.5rem;
     }
 
+    /* second_part_header is handled by the slide-in logic */
     #site_text_top_name {
-        width: 100%;
+        width: auto;
         margin-left: 0;
         font-size: 1.2rem;
         text-align: center;
+        flex-grow: 1;
     }
 
     .site_text_top {
         padding: 0.3rem 0.5rem;
         font-size: 0.85rem;
-        max-width: 45%; /* Allow two items per row */
+        max-width: none; 
         margin: 0.2rem;
     }
 
@@ -1268,7 +1595,7 @@ body {
         width: 95%;
         max-width: 100%;
         margin-bottom: 1rem;
-        min-height: 400px; /* Adjusted min-height for smaller screens */
+        min-height: 400px; 
     }
 
     #education_div {
@@ -1284,7 +1611,7 @@ body {
     .education_div_in {
         width: 95%;
         margin: 0.5rem auto;
-        min-height: 380px; /* Adjusted min-height */
+        min-height: 380px;
     }
 
     .education_title,
@@ -1315,11 +1642,11 @@ body {
     .inner_contact_div {
         width: 90%;
         max-width: 250px;
-        height: 100px; /* Adjusted height */
+        height: 100px; 
     }
 
     .top_icon {
-        font-size: 1.5rem; /* Adjusted icon size */
+        font-size: 1.5rem;
     }
 
     .bottom_text {
@@ -1345,12 +1672,11 @@ body {
     }
 }
 
-/* General responsive adjustments for images and icons */
 img,
 .logout_icon,
 .merge_icon,
 .contact_tabs i {
     max-width: 100%;
     height: auto;
-    display: block; /* Ensure they behave well in flex/grid */
+    display: block;
 }
