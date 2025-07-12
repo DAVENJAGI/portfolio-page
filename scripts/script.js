@@ -36,10 +36,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const menuToggle = document.getElementById("menu_toggle");
     const navMenu = document.getElementById("second_part_header");
+    const overlayDiv = document.getElementById('overlay');
 
     menuToggle.addEventListener("change", () => {
         if (menuToggle.checked) {
         navMenu.style.display = "flex";
+        overlayDiv.style.visibility = "visible";
         } else {
         navMenu.style.display = "none";
         }
@@ -51,10 +53,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    document.addEventListener("click", (event) => {
+    
+    if (navMenu && overlayDiv) {
+        const isHidden = window.getComputedStyle(navMenu).display === 'none';
+        console.log('Is sidebar item hidden?', isHidden);
+    
+        if (!isHidden && window.innerWidth <= 768) {
+            overlayDiv.style.visibility = 'visible';
+        }
+    }
+
+    overlayDiv.addEventListener("click", (event) => {
         const isClickInsideMenu = navMenu.contains(event.target);
         const isClickOnToggle = menuToggle.contains(event.target);
         const isClickOnLabel = event.target.closest("label[for='menu_toggle']");
+        overlayDiv.style.visibility = 'hidden';
     
         if (!isClickInsideMenu && !isClickOnToggle && !isClickOnLabel) {
             navMenu.style.display = "none";
@@ -83,4 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
     triggerBounce();
     setInterval(triggerBounce, 2 * 60 * 1000);
+    window.addEventListener('resize', () => {
+        location.reload();
+    })
 });

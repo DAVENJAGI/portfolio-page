@@ -689,18 +689,30 @@ body {
     height: 35px;
     margin-left: 0.5rem;
     border-radius: 9px;
-    width: 70px;
+    min-width: 70px;
     cursor: pointer;
+    padding: auto;
 }
-
+.overlay{
+    visibility: hidden;
+}
 .merge_code:hover {
     background-color: #3c434b;
 }
 
 .merge_icon {
+    /*margin-right: 8px;*/
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.merge_icon svg {
+    fill: #ffffff;
+    height: 1.2em;
+}
+.merge_icon svg {
+    fill: #ffffff;
 }
 
 /* EDUCATION SECTION */
@@ -1163,6 +1175,22 @@ outer_education_div::before {
     animation: bounce 2s infinite;
     z-index: 100; 
 }
+.overlays {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 1;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 1000;
+}
 
 .go_back_home:hover {
     transform: scale(1.1);
@@ -1192,7 +1220,7 @@ outer_education_div::before {
 }
 
 /* MEDIA FOR DIFFERENT SIZE SCREEN */
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 768px) {
     #header {
         flex-wrap: nowrap;
         justify-content: space-between; 
@@ -1401,10 +1429,14 @@ outer_education_div::before {
         justify-content: space-between; 
         margin-bottom: 0; 
     }
+    #second_part_header{
+        display: none;
+    }
     
     #menu_toggle:checked ~ #second_part_header {
         display: flex;
-      }
+    }
+    
     .menu_toggle {
         display: none;
     }
@@ -1488,6 +1520,17 @@ outer_education_div::before {
         height: 45px;
         width: 45px;
         font-size: 1.5rem;
+    }
+    body{
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    body::-webkit-scrollbar {
+        display: none;
+    }
+    #whole_body{
+        -ms-overflow-style: none;
+        scrollbar-width: none;
     }
 }
 
@@ -1676,13 +1719,31 @@ outer_education_div::before {
         font-size: 1.3rem;
         border-width: 3px;
     }
+
+    
+    body{
+        overflow: hidden;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    #whole_body{
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    body::-webkit-scrollbar {
+        display: none;
+    }
+    #whole::-webkit-scrollbar {
+        display: none;
+    }
 }
 
 img,
 .logout_icon,
-.merge_icon,
 .contact_tabs i {
     max-width: 100%;
     height: auto;
     display: block;
 }
+
+
