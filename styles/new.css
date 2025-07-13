@@ -611,9 +611,9 @@ body {
 }
 
 .project_title {
-    width: 96%; /
+    width: 96%;
     height: auto;
-    min-height: 10%;
+    min-height: 50px;
     margin: 0.5rem 1%;
     padding-left: 0.5rem;
     align-content: center;
