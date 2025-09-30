@@ -546,6 +546,12 @@ body {
 #front_end_icon {
     color: orange;
 }
+#mobile_icon {
+    color: #673AB7;
+}
+#cloud_icon {
+    color: #26C6DA;
+}
 
 /* PROJECTS SECTION */
 #projects {
@@ -693,6 +699,14 @@ body {
     cursor: pointer;
     padding: auto;
 }
+.merge_code span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    max-width: 100%;
+}
+
 .overlay{
     visibility: hidden;
 }
@@ -1235,6 +1249,18 @@ outer_education_div::before {
         margin-left: 15%; 
         font-size: 25px; 
     }
+    .project_branch_link {
+        display: flex;
+        flex-direction: row;
+        max-width: 100%;     
+        overflow-x: auto;
+        white-space: nowrap; 
+        margin: 1rem 1%;
+        font-size: 0.813rem;
+        align-items: center;
+        justify-content: flex-start;
+    }
+      
        
 
     #second_part_header {
